@@ -1,0 +1,16 @@
+{
+  "name": "busyzz-lib",
+  "version": "1.0.2",
+  "description": "",
+  "main": "./dist/busyzzLib.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "busyzz",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.6"
+  }
+}
