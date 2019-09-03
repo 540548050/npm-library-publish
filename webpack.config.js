@@ -1,9 +1,11 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 const isDev = process.env.NODE_ENV;
 module.exports = {
   mode: isDev ? 'development' : 'production',
-  entry: './src/index.js',
+  entry: './src/test.js',
+  devtool: isDev ? 'source-map' : 'none',
   // externals:['lodash'],
   output: {
     filename: 'busyzzLib.js',
@@ -29,17 +31,27 @@ module.exports = {
           ],
         },
       },
+      {
+        test: /\.tsx?$/,
+        use: {
+          loader: 'ts-loader',
+        },
+      },
     ],
+  },
+  resolve: {
+    extensions: ['.ts', '.js'],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
+    new webpack.HotModuleReplacementPlugin(),
   ],
   devServer: {
     contentBase: path.resolve('./dist'),
-    host: '0.0.0.0',
-    port: 3003,
+    host: 'localhost',
+    port: 3010,
     open: true,
     hot: true,
     compress: true,
